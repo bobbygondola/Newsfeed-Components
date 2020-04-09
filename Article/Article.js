@@ -112,3 +112,58 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// FUNCTION TO SET UP THE COMPONENTS
+function makeComponent({ title, date, firstParagraph, secondParagraph, thirdParagraph }) {
+
+ // FINDING/ CREATING  THE ELEMENTS 
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+
+  const articleParagraph1 = document.createElement('p')
+  const articleParagraph2 = document.createElement('p')
+  const articleParagraph3 = document.createElement('p')
+
+  const expandButton = document.createElement('span')
+
+// PUTTING THEM INTO THE DOM/ APPENDING THE ELEMENTS
+  article.appendChild(articleTitle)
+  article.appendChild(articleDate)
+  article.appendChild(articleParagraph1)
+  article.appendChild(articleParagraph2)
+  article.appendChild(articleParagraph3)
+  article.appendChild(expandButton)
+
+// ADDING CLASSES TO THE ELEMENTS
+  article.classList.add('article')
+  articleDate.classList.add('date')
+  expandButton.classList.add('expandButton')
+
+//ADDING TEXT CONTENT TO THE SHITS
+  articleTitle.textContent = title
+  articleDate.textContent = date
+  articleParagraph1.textContent = firstParagraph
+  articleParagraph2.textContent = secondParagraph
+  articleParagraph3.textContent = thirdParagraph
+  expandButton.textContent = "Click This Button!"
+
+// TOGGLING ON CLICK WITH EVENT LISTENER
+  const articleToggle = () => {
+      article.classList.toggle('article-open')
+  }
+  expandButton.addEventListener('click', articleToggle)
+
+  return article
+  
+}
+//SETTING UP THE MAP
+const articles = document.querySelector('.articles')
+
+//MAP TIME
+const articleElements = data.map(articleData => {
+  return makeComponent({ title: articleData.title, date: articleData.date, firstParagraph: articleData.firstParagraph, secondParagraph: articleData.secondParagraph, thirdParagraph: articleData.thirdParagraph })
+});
+articleElements.forEach(articleElement => {
+  articles.appendChild(articleElement)
+});
