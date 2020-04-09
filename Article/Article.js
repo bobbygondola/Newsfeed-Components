@@ -120,9 +120,11 @@ function makeComponent({ title, date, firstParagraph, secondParagraph, thirdPara
   const article = document.createElement('div')
   const articleTitle = document.createElement('h2')
   const articleDate = document.createElement('p')
+
   const articleParagraph1 = document.createElement('p')
   const articleParagraph2 = document.createElement('p')
   const articleParagraph3 = document.createElement('p')
+
   const expandButton = document.createElement('span')
 
 // PUTTING THEM INTO THE DOM/ APPENDING THE ELEMENTS
@@ -157,6 +159,7 @@ function makeComponent({ title, date, firstParagraph, secondParagraph, thirdPara
 }
 //SETTING UP THE MAP
 const articles = document.querySelector('.articles')
+
 //MAP TIME
 const articleElements = data.map(articleData => {
   return makeComponent({ title: articleData.title, date: articleData.date, firstParagraph: articleData.firstParagraph, secondParagraph: articleData.secondParagraph, thirdParagraph: articleData.thirdParagraph })
